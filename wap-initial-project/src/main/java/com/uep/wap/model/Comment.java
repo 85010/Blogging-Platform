@@ -10,8 +10,6 @@ public class Comment {
     private int id;
     @Column(name ="content")
     private String content;
-    @Column(name ="author")
-    private String author;
 
     @Column(name ="createdate")
     private String createdate;
@@ -45,16 +43,6 @@ public class Comment {
 	}
 
 
-	public String getAuthor() {
-		return author;
-	}
-
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-
 	public String getCreatedate() {
 		return createdate;
 	}
@@ -66,7 +54,6 @@ public class Comment {
 
     public Comment(String content, String author, String createdate) {
         this.content = content;
-        this.author = author;
         this.createdate = createdate;
     }
 }

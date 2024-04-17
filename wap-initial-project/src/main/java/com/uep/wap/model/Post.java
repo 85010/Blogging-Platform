@@ -1,5 +1,5 @@
 package com.uep.wap.model;
-
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -12,9 +12,6 @@ public class Post {
     private String title;
     @Column(name ="content")
     private String content;
-
-    @Column(name ="category")
-    private String category;
     @Column(name ="createdate")
     private String createdate;
     //nie ma dodanych wszystkich danych z UML, nie ma author,tags,comments, nie wiedzialem jak to dodac i czy wgl to sie dodaje czy przez ralacje to sie samo łączy
@@ -65,14 +62,6 @@ public class Post {
         this.content = content;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getCreatedate() {
         return createdate;
     }
@@ -83,7 +72,6 @@ public class Post {
     public Post(String title, String content, String category, String createdate) {
         this.title = title;
         this.content = content;
-        this.category = category;
         this.createdate = createdate;
 }
 }

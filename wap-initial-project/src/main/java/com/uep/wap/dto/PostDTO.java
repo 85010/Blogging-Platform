@@ -1,5 +1,10 @@
 package com.uep.wap.dto;
 
+import java.util.List;
+
+import com.uep.wap.model.Comment;
+import com.uep.wap.model.Tag;
+
 public class PostDTO {
 
     private Integer id;

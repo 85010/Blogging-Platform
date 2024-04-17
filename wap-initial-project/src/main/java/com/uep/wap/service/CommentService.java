@@ -1,8 +1,11 @@
 package com.uep.wap.service;
-
+import com.uep.wap.dto.CommentDTO;
+import com.uep.wap.model.Comment;
 import com.uep.wap.model.User;
-import com.uep.wap.repository.StudentRepository;
-import com.uep.wap.dto.StudentDTO;
+import com.uep.wap.repository.CommentRepository;
+
+import java.time.Instant;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

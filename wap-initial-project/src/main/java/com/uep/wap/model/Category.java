@@ -1,5 +1,7 @@
 package com.uep.wap.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -34,7 +36,7 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    public Tag(String name){
+    public void Tag(String name){
         this.name = name;
     }
     

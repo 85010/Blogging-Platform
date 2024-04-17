@@ -1,10 +1,15 @@
 package com.uep.wap.dto;
 
+import java.util.List;
+
+import com.uep.wap.model.Post;
+
 public class TagDTO {
 
     private Integer id;
     private String name;
-
+	private List<Post> posts;
+	
     public Integer getId() {
 		return id;
 	}
@@ -17,4 +22,13 @@ public class TagDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<Post> getPosts(){
+		return posts;
+	}
+
+	public void setPosts(List<Post> post){
+		this.posts = posts;
+	}
+
 }

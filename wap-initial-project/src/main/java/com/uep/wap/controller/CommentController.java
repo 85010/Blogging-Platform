@@ -1,28 +1,27 @@
 package com.uep.wap.controller;
-
-import com.uep.wap.dto.UserDTO;
-import com.uep.wap.model.User;
-import com.uep.wap.service.UsersService;
+import com.uep.wap.dto.CommentDTO;
+import com.uep.wap.model.Comment;
+import com.uep.wap.service.CommentService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/comments")
 public class CommentController {
 
-    private final UsersService usersService;
+    private final CommentService commentService;
 
-    public CommentController(UsersService usersService) {
-        this.usersService = usersService;
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
     }
 
     @GetMapping(path = "/")
-    public Iterable<User> getAllComments(){
-        return usersService.getAllComments();
+    public Iterable<Comment> getAllComments(){
+        return commentService.getAllComments();
     }
 
     @PostMapping(path = "/")
-    public String addComment(@RequestBody UserDTO userDTO){
-        usersService.addComment(userDTO);
+    public String addComment(@RequestBody CommentDTO commentDTO){
+        commentService.addComment(commentDTO);
         return "Comment added!";
     }
 }

@@ -1,28 +1,28 @@
 package com.uep.wap.controller;
+import com.uep.wap.dto.PostDTO;
+import com.uep.wap.model.Post;
+import com.uep.wap.service.PostService;
 
-import com.uep.wap.dto.UserDTO;
-import com.uep.wap.model.User;
-import com.uep.wap.service.UsersService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/posts")
 public class PostController {
 
-    private final UsersService usersService;
+    private final PostService postService;
 
-    public PostController(UsersService usersService) {
-        this.usersService = usersService;
+    public PostController(PostService postService) {
+        this.postService = postService;
     }
 
     @GetMapping(path = "/")
-    public Iterable<User> getAllPosts(){
-        return usersService.getAllPosts();
+    public Iterable<Post> getAllPosts(){
+        return postService.getAllPosts();
     }
 
     @PostMapping(path = "/")
-    public String addPost(@RequestBody UserDTO userDTO){
-        usersService.addPost(userDTO);
+    public String addPost(@RequestBody PostDTO postDTO){
+        postService.addPost(postDTO);
         return "Post added!";
     }
 }
