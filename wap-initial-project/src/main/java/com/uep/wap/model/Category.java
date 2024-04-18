@@ -40,6 +40,10 @@ public class Category {
         this.name = name;
     }
     
+    public Category(String name, List<Post> posts) {
+        this.name = name;
+        this.posts = posts;
+    }
 }
 
 

@@ -1,7 +1,5 @@
 package com.uep.wap.model;
-
 import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
@@ -49,6 +47,10 @@ public class Tag {
         this.name = name;
     }
     
+    public Tag(String name, List<Post> posts) {
+        this.name = name;
+        this.posts = posts;
+    }
 }
 
 

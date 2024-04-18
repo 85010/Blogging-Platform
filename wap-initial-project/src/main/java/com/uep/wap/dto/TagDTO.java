@@ -27,7 +27,7 @@ public class TagDTO {
 		return posts;
 	}
 
-	public void setPosts(List<Post> post){
+	public void setPosts(List<Post> posts){
 		this.posts = posts;
 	}
 

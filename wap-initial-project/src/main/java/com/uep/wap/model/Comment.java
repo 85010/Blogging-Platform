@@ -12,13 +12,15 @@ public class Comment {
     private String content;
 
     @Column(name ="createdate")
-    private String createdate;
+    private long createdate;
 
 	@ManyToOne
     @JoinColumn(name = "author_id")
-    private User author;
+    private String author;
 
-    
+    @ManyToOne
+    @JoinColumn(name = "parent_post_id")
+    private Post parentPost;
 
     public Comment(){
 
@@ -43,18 +45,28 @@ public class Comment {
 	}
 
 
-	public String getCreatedate() {
+	public long getCreatedate() {
 		return createdate;
 	}
 
 
-	public void setCreatedate(String createdate) {
+	public void setCreatedate(long createdate) {
 		this.createdate = createdate;
 	}
 
-    public Comment(String content, String author, String createdate) {
+	public Post getParentPost(){
+		return parentPost;
+	}
+
+	public void setParentPost(Post parentPost){
+		this.parentPost = parentPost;
+	}
+
+    public Comment(String content, String author, long createdate, Post parentPost) {
         this.content = content;
+		this.author = author;
         this.createdate = createdate;
+		this.parentPost = parentPost;
     }
 }
 

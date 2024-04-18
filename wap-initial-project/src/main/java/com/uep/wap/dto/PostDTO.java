@@ -1,18 +1,18 @@
 package com.uep.wap.dto;
-
 import java.util.List;
-
+import com.uep.wap.model.Category;
 import com.uep.wap.model.Comment;
 import com.uep.wap.model.Tag;
+import com.uep.wap.model.User;
 
 public class PostDTO {
 
     private Integer id;
     private String title;
 	private String content;
-	private String author;
+	private User author;
 	private List<Tag> tags;
-	private Integer category;
+	private Category category;
 	private String createdate;
 	private List<Comment> comments;
 
@@ -35,10 +35,10 @@ public class PostDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getAuthor() {
+	public User getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
+	public void setAuthor(User author) {
 		this.author = author;
 	}
 	public List<Tag> getTags() {
@@ -47,10 +47,10 @@ public class PostDTO {
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
-	public Integer getCategory() {
+	public Category getCategory() {
 		return category;
 	}
-	public void setCategory(Integer category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 	public String getCreatedate() {

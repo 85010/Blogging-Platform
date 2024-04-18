@@ -1,4 +1,5 @@
 package com.uep.wap.dto;
+import com.uep.wap.model.Post;
 
 public class CommentDTO {
 
@@ -6,6 +7,7 @@ public class CommentDTO {
     private String content;
 	private String author;
 	private String createdate;
+	private Post parentPost;
 
 	public Integer getId() {
 		return id;
@@ -30,5 +32,13 @@ public class CommentDTO {
 	}
 	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
+	}
+
+	public Post getParentPost(){
+		return parentPost;
+	}
+
+	public void setParentPost(Post parentPost){
+		this.parentPost = parentPost;
 	}
 }

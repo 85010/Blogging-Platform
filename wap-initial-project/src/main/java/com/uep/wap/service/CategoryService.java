@@ -1,10 +1,7 @@
 package com.uep.wap.service;
-
 import com.uep.wap.dto.CategoryDTO;
 import com.uep.wap.model.Category;
-import com.uep.wap.model.User;
 import com.uep.wap.repository.CategoryRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

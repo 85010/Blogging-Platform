@@ -8,12 +8,10 @@ public class Post {
     @Id
     @Column(name ="id")
     private int id;
-    @Column(name ="title")
-    private String title;
     @Column(name ="content")
     private String content;
     @Column(name ="createdate")
-    private String createdate;
+    private long createdate;
     //nie ma dodanych wszystkich danych z UML, nie ma author,tags,comments, nie wiedzialem jak to dodac i czy wgl to sie dodaje czy przez ralacje to sie samo łączy
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -45,15 +43,6 @@ public class Post {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getContent() {
         return content;
     }
@@ -62,17 +51,44 @@ public class Post {
         this.content = content;
     }
 
-    public String getCreatedate() {
+    public long getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(long createdate) {
         this.createdate = createdate;
     }
-    public Post(String title, String content, String category, String createdate) {
-        this.title = title;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public Post(String content, Category category, long createdate, User author, List<Tag> tags) {
         this.content = content;
+        this.category = category;
         this.createdate = createdate;
+        this.author = author;
+        this.tags = tags;
 }
 }
 
