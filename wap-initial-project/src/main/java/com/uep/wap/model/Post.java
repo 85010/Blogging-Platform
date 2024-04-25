@@ -15,9 +15,9 @@ public class Post {
     //nie ma dodanych wszystkich danych z UML, nie ma author,tags,comments, nie wiedzialem jak to dodac i czy wgl to sie dodaje czy przez ralacje to sie samo łączy
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "question_tag",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "post_tag",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tags;
 
     @ManyToOne

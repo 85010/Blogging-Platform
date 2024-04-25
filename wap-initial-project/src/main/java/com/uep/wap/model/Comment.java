@@ -1,5 +1,4 @@
 package com.uep.wap.model;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +15,7 @@ public class Comment {
 
 	@ManyToOne
     @JoinColumn(name = "author_id")
-    private String author;
+    private User author;
 
     @ManyToOne
     @JoinColumn(name = "parent_post_id")
@@ -62,12 +61,13 @@ public class Comment {
 		this.parentPost = parentPost;
 	}
 
-    public Comment(String content, String author, long createdate, Post parentPost) {
-        this.content = content;
+    public Comment(String content, User author, long createdate, Post parentPost) {
+		this.content = content;
 		this.author = author;
-        this.createdate = createdate;
+		this.createdate = createdate;
 		this.parentPost = parentPost;
-    }
+	}
+	
 }
 
 

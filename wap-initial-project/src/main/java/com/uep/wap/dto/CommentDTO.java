@@ -1,11 +1,13 @@
 package com.uep.wap.dto;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+
 import com.uep.wap.model.Post;
 
 public class CommentDTO {
 
     private Integer id;
     private String content;
-	private String author;
+	private User author;
 	private String createdate;
 	private Post parentPost;
 
@@ -21,10 +23,10 @@ public class CommentDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getAuthor() {
+	public User getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
+	public void setAuthor(User author) {
 		this.author = author;
 	}
 	public String getCreatedate() {

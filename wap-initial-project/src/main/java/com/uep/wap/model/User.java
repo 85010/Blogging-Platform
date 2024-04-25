@@ -1,13 +1,12 @@
 package com.uep.wap.model;
-
 import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name="users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
     private int id;
     @Column(name ="username")
@@ -18,10 +17,10 @@ public class User {
     @Column(name ="role")
     private String role;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Post> posts;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Comment> comments;
     
 
@@ -37,7 +36,6 @@ public class User {
         this.id = id;
     }
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 
 
