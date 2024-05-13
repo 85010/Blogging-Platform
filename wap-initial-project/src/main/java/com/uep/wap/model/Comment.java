@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Table(name="comments")
 public class Comment {
     @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
     private int id;
     @Column(name ="content")
@@ -21,9 +22,7 @@ public class Comment {
     @JoinColumn(name = "parent_post_id")
     private Post parentPost;
 
-    public Comment(){
-
-    }
+    
     public int getId() {
 		return id;
 	}
@@ -59,6 +58,9 @@ public class Comment {
 
 	public void setParentPost(Post parentPost){
 		this.parentPost = parentPost;
+	}
+
+	public Comment() {
 	}
 
     public Comment(String content, User author, long createdate, Post parentPost) {

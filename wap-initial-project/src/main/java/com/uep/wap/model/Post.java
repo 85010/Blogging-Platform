@@ -6,13 +6,13 @@ import javax.persistence.*;
 @Table(name="posts")
 public class Post {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
     private int id;
     @Column(name ="content")
     private String content;
     @Column(name ="createdate")
     private long createdate;
-    //nie ma dodanych wszystkich danych z UML, nie ma author,tags,comments, nie wiedzialem jak to dodac i czy wgl to sie dodaje czy przez ralacje to sie samo łączy
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "post_tag",

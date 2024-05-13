@@ -1,6 +1,6 @@
 package com.uep.wap.dto;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
+import com.uep.wap.model.User;
 import com.uep.wap.model.Post;
 
 public class CommentDTO {
