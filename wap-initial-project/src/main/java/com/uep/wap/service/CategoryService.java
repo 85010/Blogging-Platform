@@ -13,6 +13,9 @@ public class CategoryService {
     public void addCategory(CategoryDTO categoryDTO) {
         Category category = new Category(categoryDTO.getName(), categoryDTO.getPosts());
         categoryRepository.save(category);
+        category.setName(categoryDTO.getName());
+
+        categoryRepository.save(category);
 
         System.out.println("Category added");
     }

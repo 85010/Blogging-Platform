@@ -15,6 +15,8 @@ public class PostDTO {
 	private Category category;
 	private String createdate;
 	private List<Comment> comments;
+	private int upvotes;
+	private long lastEdited;
 
 
     public Integer getId() {
@@ -65,4 +67,18 @@ public class PostDTO {
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
+	public int getUpvotes() {
+        return upvotes;
+    }
+
+    public void setUpvotes(int upvotes) {
+        this.upvotes = upvotes;
+    }
+	public long getLastEdited() {
+        return lastEdited;
+    }
+
+    public void setLastEdited(long lastEdited) {
+        this.lastEdited = lastEdited;
+    }
 }

@@ -24,4 +24,8 @@ public class CommentController {
         commentService.addComment(commentDTO);
         return "Comment added!";
     }
+    @GetMapping(path = "/user/{userId}")
+    public Iterable<Comment> getUserPosts(@PathVariable int userId) {
+        return commentService.getUserComments(userId);
+    }
 }

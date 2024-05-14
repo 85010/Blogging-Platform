@@ -2,6 +2,8 @@ package com.uep.wap.model;
 import java.util.List;
 import javax.persistence.*;
 
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -59,6 +61,21 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Post> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Post> comments) {
+        this.comments = comments;
     }
     
     public User(String username, String email, String role){

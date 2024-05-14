@@ -10,6 +10,8 @@ public class CommentDTO {
 	private User author;
 	private String createdate;
 	private Post parentPost;
+	private int upvotes;
+	private long lastEdited;
 
 	public Integer getId() {
 		return id;
@@ -43,4 +45,21 @@ public class CommentDTO {
 	public void setParentPost(Post parentPost){
 		this.parentPost = parentPost;
 	}
+	public long getLastEdited() {
+        return lastEdited;
+    }
+
+    public void setLastEdited(long lastEdited) {
+        this.lastEdited = lastEdited;
+    }
+
+
+
+    public int getUpvotes() {
+        return upvotes;
+    }
+
+    public void setUpvotes(int upvotes) {
+        this.upvotes = upvotes;
+    }
 }

@@ -13,6 +13,10 @@ public class Post {
     private String content;
     @Column(name ="createdate")
     private long createdate;
+    @Column(name = "upvotes")
+    private int upvotes;
+    @Column(name = "last_edited")
+    private long lastEdited;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "post_tag",
@@ -82,13 +86,29 @@ public class Post {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
+    public int getUpvotes() {
+        return upvotes;
+    }
 
-    public Post(String content, Category category, long createdate, User author, List<Tag> tags) {
+    public void setUpvotes(int upvotes) {
+        this.upvotes = upvotes;
+    }
+    public long getLastEdited() {
+        return lastEdited;
+    }
+
+    public void setLastEdited(long lastEdited) {
+        this.lastEdited = lastEdited;
+    }
+
+    public Post(String content, Category category, long createdate, User author, List<Tag> tags, int upvotes, long lastEdited) {
         this.content = content;
         this.category = category;
         this.createdate = createdate;
         this.author = author;
         this.tags = tags;
+        this.upvotes = upvotes;
+        this.lastEdited = lastEdited;
 }
 }
 

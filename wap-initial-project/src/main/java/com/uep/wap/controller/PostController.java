@@ -3,6 +3,7 @@ import com.uep.wap.dto.PostDTO;
 import com.uep.wap.model.Post;
 import com.uep.wap.service.PostService;
 
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,5 +25,19 @@ public class PostController {
     public String addPost(@RequestBody PostDTO postDTO){
         postService.addPost(postDTO);
         return "Post added!";
+    }
+    @GetMapping(path = "/user/{userId}")
+    public Iterable<Post> getUserPosts(@PathVariable int userId) {
+        return postService.getUserPosts(userId);
+    }
+
+    @GetMapping(path = "/category/{categoryId}")
+    public Iterable<Post> getCategoryPosts(@PathVariable int categoryId) {
+        return postService.getPostsFromCategory(categoryId);
+    }
+
+    @GetMapping(path = "/latest")
+    public Iterable<Post> getLatestPost() {
+        return postService.getLatestPosts();
     }
 }
