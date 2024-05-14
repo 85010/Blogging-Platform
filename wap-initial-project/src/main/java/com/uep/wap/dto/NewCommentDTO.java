@@ -16,7 +16,6 @@ public class NewCommentDTO {
         this.content = content;
     }
 
-
     public int getAuthorId() {
         return authorId;
     }

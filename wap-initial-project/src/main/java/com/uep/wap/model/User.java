@@ -2,8 +2,6 @@ package com.uep.wap.model;
 import java.util.List;
 import javax.persistence.*;
 
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
-
 @Entity
 @Table(name="users")
 public class User {
@@ -23,7 +21,7 @@ public class User {
     private List<Post> posts;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private List<Comment> comments;
+    private List<Post> comments;
     
 
     public User(){
@@ -73,11 +71,11 @@ public class User {
     public List<Post> getComments() {
         return comments;
     }
-
+    
     public void setComments(List<Post> comments) {
         this.comments = comments;
-    }
-    
+    }   
+
     public User(String username, String email, String role){
         this.username = username;
         this.email = email;

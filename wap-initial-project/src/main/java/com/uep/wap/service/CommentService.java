@@ -1,5 +1,6 @@
 package com.uep.wap.service;
 
+import com.uep.wap.dto.CommentDTO;
 import com.uep.wap.dto.NewCommentDTO;
 import com.uep.wap.model.Comment;
 import com.uep.wap.model.Post;
@@ -41,13 +42,13 @@ public class CommentService {
             return;
         }
 
-        Comment comment = targetcomment.get();
+        Comment comment = targetComment.get();
         comment.setUpvotes(comment.getUpvotes() + 1);
 
         commentRepository.save(comment);
     }
 
-    public List<comment> getUserComments(int userId) {
+    public List<Comment> getUserComments(int userId) {
         System.out.println("Getting user comments:" + userId);
 
         List<Comment> comments = commentRepository.findUserComments(userId);
@@ -57,6 +58,11 @@ public class CommentService {
 
     public Iterable<Comment> getAllComments() {
         return commentRepository.findAll();
+    }
+
+    public void addComment(CommentDTO commentDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addComment'");
     }
 }
 

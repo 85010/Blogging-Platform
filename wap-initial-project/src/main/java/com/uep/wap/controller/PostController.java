@@ -1,9 +1,8 @@
 package com.uep.wap.controller;
+import com.uep.wap.dto.NewPostDTO;
 import com.uep.wap.dto.PostDTO;
 import com.uep.wap.model.Post;
 import com.uep.wap.service.PostService;
-
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,9 +21,10 @@ public class PostController {
     }
 
     @PostMapping(path = "/")
-    public String addPost(@RequestBody PostDTO postDTO){
+    public String addPost(@RequestBody NewPostDTO postDTO){
         postService.addPost(postDTO);
         return "Post added!";
+
     }
     @GetMapping(path = "/user/{userId}")
     public Iterable<Post> getUserPosts(@PathVariable int userId) {

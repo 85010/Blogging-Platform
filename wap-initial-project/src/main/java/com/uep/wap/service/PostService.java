@@ -1,6 +1,7 @@
 package com.uep.wap.service;
 
 import com.uep.wap.dto.NewPostDTO;
+import com.uep.wap.dto.PostDTO;
 import com.uep.wap.model.Category;
 import com.uep.wap.model.Post;
 import com.uep.wap.model.User;

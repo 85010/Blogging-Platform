@@ -53,8 +53,6 @@ public class CommentDTO {
         this.lastEdited = lastEdited;
     }
 
-
-
     public int getUpvotes() {
         return upvotes;
     }

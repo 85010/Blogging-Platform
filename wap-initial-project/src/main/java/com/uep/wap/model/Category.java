@@ -1,7 +1,6 @@
 package com.uep.wap.model;
 import java.util.List;
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties; //sprawdz jutro z gackiem, po co to?
 
 
 @Entity
