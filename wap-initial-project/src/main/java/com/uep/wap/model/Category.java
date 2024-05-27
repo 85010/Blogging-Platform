@@ -1,23 +1,27 @@
 package com.uep.wap.model;
+
 import java.util.List;
 import javax.persistence.*;
 
-
 @Entity
-@Table(name="categories")
+@Table(name = "categories")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name = "id")
     private int id;
-    @Column(name ="name")
+
+    @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "category")
     private List<Post> posts;
 
-    public Category(){
+    public Category() {}
 
+    public Category(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -35,14 +39,17 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    public void Tag(String name){
-        this.name = name;
+
+    public List<Post> getPosts() {
+        return posts;
     }
-    
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     public Category(String name, List<Post> posts) {
         this.name = name;
         this.posts = posts;
     }
 }
-
-

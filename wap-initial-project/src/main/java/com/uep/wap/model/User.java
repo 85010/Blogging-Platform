@@ -1,4 +1,5 @@
 package com.uep.wap.model;
+
 import java.util.List;
 import javax.persistence.*;
 
@@ -7,10 +8,12 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name ="id", nullable = false, updatable = false)
     private int id;
+
     @Column(name ="username")
     private String username;
+
     @Column(name ="email")
     private String email;
 
@@ -21,11 +24,13 @@ public class User {
     private List<Post> posts;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private List<Post> comments;
-    
+    private List<Comment> comments;
 
-    public User(){
+    public User() {}
 
+    // Dodany konstruktor
+    public User(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -35,7 +40,6 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getUsername() {
         return username;
@@ -60,6 +64,7 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
     public List<Post> getPosts() {
         return posts;
     }
@@ -68,19 +73,17 @@ public class User {
         this.posts = posts;
     }
 
-    public List<Post> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
-    
-    public void setComments(List<Post> comments) {
-        this.comments = comments;
-    }   
 
-    public User(String username, String email, String role){
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public User(String username, String email, String role) {
         this.username = username;
         this.email = email;
         this.role = role;
     }
 }
-
-

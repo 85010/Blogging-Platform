@@ -18,7 +18,7 @@ public class PostService {
     @Autowired
     private PostRepository postRepository;
 
-    public void addPost(NewPostDTO postDTO) {
+    public void addPost(PostDTO postDTO) {
         long currentTime = Instant.now().getEpochSecond();
 
         Post post = new Post();

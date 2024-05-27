@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Service
 public class CommentService {
+
     @Autowired
     private CommentRepository commentRepository;
 
@@ -61,8 +62,17 @@ public class CommentService {
     }
 
     public void addComment(CommentDTO commentDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addComment'");
+        long currentTime = Instant.now().getEpochSecond();
+
+        Comment comment = new Comment();
+        comment.setContent(commentDTO.getContent());
+        comment.setAuthor(new User(commentDTO.getAuthorId()));
+        comment.setUpvotes(0);
+        comment.setCreatedate(currentTime);
+        comment.setLastEdited(currentTime);
+        comment.setParentPost(new Post(commentDTO.getParentPostId()));
+        commentRepository.save(comment);
+
+        System.out.println("Comment added");
     }
 }
-

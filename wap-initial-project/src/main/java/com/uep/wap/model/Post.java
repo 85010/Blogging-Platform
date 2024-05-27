@@ -1,4 +1,5 @@
 package com.uep.wap.model;
+
 import java.util.List;
 import javax.persistence.*;
 
@@ -31,10 +32,12 @@ public class Post {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;
-    
 
-    public Post(){
+    public Post() {}
 
+    // Dodany konstruktor
+    public Post(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -44,8 +47,6 @@ public class Post {
     public void setId(int id) {
         this.id = id;
     }
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     public String getContent() {
         return content;
@@ -86,6 +87,7 @@ public class Post {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
+
     public int getUpvotes() {
         return upvotes;
     }
@@ -93,6 +95,7 @@ public class Post {
     public void setUpvotes(int upvotes) {
         this.upvotes = upvotes;
     }
+
     public long getLastEdited() {
         return lastEdited;
     }
@@ -109,6 +112,5 @@ public class Post {
         this.tags = tags;
         this.upvotes = upvotes;
         this.lastEdited = lastEdited;
+    }
 }
-}
-
