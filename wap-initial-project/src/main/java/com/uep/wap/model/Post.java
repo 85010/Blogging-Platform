@@ -35,7 +35,6 @@ public class Post {
 
     public Post() {}
 
-    // Dodany konstruktor
     public Post(int id) {
         this.id = id;
     }

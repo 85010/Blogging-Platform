@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="user-info">
+            <form th:action="@{/}" method="get">
+                <select name="userId" onchange="this.form.submit()">
+                    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"
+                            th:selected="${user.id} == ${currentUser?.id}">Username</option>
+                </select>
+            </form>
+        </div>
+    </header>
+    <main>
+        <section class="posts">
+            <h1>All Posts</h1>
+            <form th:action="@{/posts}" th:object="${newPost}" method="post">
+                <label for="content">Content:</label>
+                <textarea th:field="*{content}" id="content" required></textarea>
+                <br>
+                <button type="submit">Add Post</button>
+            </form>
+            <div th:each="post : ${posts}" class="post">
+                <p th:text="${post.content}">Post Content</p>
+                <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a>
+                <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a>
+                <div class="comments">
+                    <h3>Comments</h3>
+                    <form th:action="@{/posts/{postId}/comments(postId=${post.id})}" th:object="${newComment}" method="post">
+                        <label for="content">Comment:</label>
+                        <textarea th:field="*{content}" id="content" required></textarea>
+                        <br>
+                        <button type="submit">Add Comment</button>
+                    </form>
+                    <div th:each="comment : ${post.comments}" class="comment">
+                        <p th:text="${comment.content}">Comment Content</p>
+                        <p><small th:text="${comment.author}">Author</small></p>
+                        <a th:href="@{/posts/{postId}/comments/edit/{id}(postId=${post.id},id=${comment.id})}">Edit</a>
+                        <a th:href="@{/posts/{postId}/comments/delete/{id}(postId=${post.id},id=${comment.id})}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

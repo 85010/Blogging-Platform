@@ -99,7 +99,7 @@ public class PostDTO {
         this.lastEdited = lastEdited;
     }
 
-    // Dodane metody, które są potrzebne w PostService
+    
     public Integer getAuthorId() {
         return author != null ? author.getId() : null;
     }

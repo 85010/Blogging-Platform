@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Comment Form</title>
+</head>
+<body>
+    <h1 th:text="${comment.id == null} ? 'Add New Comment' : 'Edit Comment'">Comment Form</h1>
+    <form th:action="@{/posts/{postId}/comments(postId=${comment.post.id})}" th:object="${comment}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label for="content">Comment:</label>
+        <textarea th:field="*{content}" id="content" required></textarea>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+    <a th:href="@{/}">Back to Posts</a>
+</body>
+</html>
