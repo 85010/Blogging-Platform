@@ -30,7 +30,8 @@ public class HomeController {
                 .stream(postRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
         model.addAttribute("posts", posts);
-        model.addAttribute("newPost", new Post()); 
+        model.addAttribute("newPost", new Post()); // Dodanie newPost do modelu
+        model.addAttribute("users", userRepository.findAll()); // Dodanie użytkowników do modelu
         return "index";
     }
 
@@ -38,7 +39,8 @@ public class HomeController {
     public String search(@RequestParam("query") String query, Model model) {
         List<Post> posts = postRepository.findByContentContaining(query);
         model.addAttribute("posts", posts);
-        model.addAttribute("newPost", new Post());
+        model.addAttribute("newPost", new Post()); // Dodanie newPost do modelu
+        model.addAttribute("users", userRepository.findAll()); // Dodanie użytkowników do modelu
         return "index";
     }
 
