@@ -16,6 +16,12 @@
         </div>
     </header>
     <main>
+        <section class="categories">
+            <h1>Categories</h1>
+            <ul>
+                <li th:each="category : ${categories}" th:text="${category.name}">Category Name</li>
+            </ul>
+        </section>
         <section class="posts">
             <h1>All Posts</h1>
             <form th:action="@{/posts/new}" th:object="${newPost}" method="post">
