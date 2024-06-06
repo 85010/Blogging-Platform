@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+    <h1>All Posts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Content</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Upvotes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.id}">1</td>
+                <td th:text="${post.content}">Content</td>
+                <td th:text="${post.author.username}">Author</td>
+                <td th:text="${post.category.name}">Category</td>
+                <td th:text="${post.upvotes}">0</td>
+                <td>
+                    <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a>
+                    <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/posts/new">Add New Post</a>
+</body>
+</html>

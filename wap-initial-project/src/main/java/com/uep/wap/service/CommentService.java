@@ -1,7 +1,6 @@
 package com.uep.wap.service;
 
 import com.uep.wap.dto.CommentDTO;
-import com.uep.wap.dto.NewCommentDTO;
 import com.uep.wap.model.Comment;
 import com.uep.wap.model.Post;
 import com.uep.wap.model.User;
@@ -19,7 +18,7 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    public void addComment(NewCommentDTO commentDTO) {
+    public void addComment(CommentDTO commentDTO) {
         long currentTime = Instant.now().getEpochSecond();
 
         Comment comment = new Comment();
@@ -59,20 +58,5 @@ public class CommentService {
 
     public Iterable<Comment> getAllComments() {
         return commentRepository.findAll();
-    }
-
-    public void addComment(CommentDTO commentDTO) {
-        long currentTime = Instant.now().getEpochSecond();
-
-        Comment comment = new Comment();
-        comment.setContent(commentDTO.getContent());
-        comment.setAuthor(new User(commentDTO.getAuthorId()));
-        comment.setUpvotes(0);
-        comment.setCreatedate(currentTime);
-        comment.setLastEdited(currentTime);
-        comment.setParentPost(new Post(commentDTO.getParentPostId()));
-        commentRepository.save(comment);
-
-        System.out.println("Comment added");
     }
 }

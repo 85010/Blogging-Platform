@@ -18,9 +18,19 @@
     <main>
         <section class="posts">
             <h1>All Posts</h1>
-            <form th:action="@{/posts}" th:object="${newPost}" method="post">
+            <form th:action="@{/posts/new}" th:object="${newPost}" method="post">
                 <label for="content">Content:</label>
                 <textarea th:field="*{content}" id="content" required></textarea>
+                <br>
+                <label for="author">Author:</label>
+                <select th:field="*{author.id}" id="author" required>
+                    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+                </select>
+                <br>
+                <label for="category">Category:</label>
+                <select th:field="*{category.id}" id="category" required>
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                </select>
                 <br>
                 <button type="submit">Add Post</button>
             </form>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Post</title>
+</head>
+<body>
+    <h1>Edit Post</h1>
+    <form action="/posts/update/{id}" method="post">
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required th:text="${post.content}"></textarea><br><br>
+        
+        <label for="author">Author:</label>
+        <select id="author" name="author.id" required>
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}" th:selected="${user.id == post.author.id}"></option>
+        </select><br><br>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category.id" required>
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${category.id == post.category.id}"></option>
+        </select><br><br>
+
+        <button type="submit">Update Post</button>
+    </form>
+    <a href="/posts">Back to Posts</a>
+</body>
+</html>
