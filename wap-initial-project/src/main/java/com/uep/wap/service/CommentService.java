@@ -1,6 +1,6 @@
 package com.uep.wap.service;
 
-import com.uep.wap.dto.CommentDTO;
+import com.uep.wap.dto.NewCommentDTO;
 import com.uep.wap.model.Comment;
 import com.uep.wap.model.Post;
 import com.uep.wap.model.User;
@@ -18,7 +18,7 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    public void addComment(CommentDTO commentDTO) {
+    public void addComment(NewCommentDTO commentDTO) {
         long currentTime = Instant.now().getEpochSecond();
 
         Comment comment = new Comment();

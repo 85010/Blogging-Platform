@@ -1,6 +1,6 @@
 package com.uep.wap.controller;
 
-import com.uep.wap.dto.CommentDTO;
+import com.uep.wap.dto.NewCommentDTO;
 import com.uep.wap.model.Comment;
 import com.uep.wap.service.CommentService;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class CommentController {
     }
 
     @PostMapping(path = "/")
-    public String addComment(@RequestBody CommentDTO commentDTO) {
+    public String addComment(@RequestBody NewCommentDTO commentDTO) {
         commentService.addComment(commentDTO);
         return "Comment added!";
     }

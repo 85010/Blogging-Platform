@@ -14,7 +14,7 @@ public class PostDTO {
     private User author;
     private List<Tag> tags;
     private Category category;
-    private String createdate;
+    private long createdate;
     private List<Comment> comments;
     private int upvotes;
     private long lastEdited;
@@ -67,11 +67,11 @@ public class PostDTO {
         this.category = category;
     }
 
-    public String getCreatedate() {
+    public long getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(long createdate) {
         this.createdate = createdate;
     }
 

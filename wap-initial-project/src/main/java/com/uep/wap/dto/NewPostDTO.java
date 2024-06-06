@@ -10,17 +10,13 @@ public class NewPostDTO {
 
     private int upvotes;
 
-    private long createdAt;
-
+    private long createdate;
 
     private long lastEdited;
 
-
     private int authorId;
 
-
     private int categoryId;
-
 
     private List<Tag> tags;
 
@@ -32,12 +28,12 @@ public class NewPostDTO {
         this.content = content;
     }
 
-    public long getCreatedAt() {
-        return createdAt;
+    public long getCreatedate() {
+        return createdate;
     }
 
-    public void setCreatedAt(long createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedate(long createdate) {
+        this.createdate = createdate;
     }
 
     public long getLastEdited() {
