@@ -7,6 +7,7 @@ import java.util.List;
 public class CategoryDTO {
 
     private int id;
+
     private String name;
 
     private List<Post> posts;
@@ -23,7 +24,7 @@ public class CategoryDTO {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPost(List<Post> posts) {
         this.posts = posts;
     }
 

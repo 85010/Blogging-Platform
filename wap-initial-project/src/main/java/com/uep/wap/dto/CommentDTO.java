@@ -5,11 +5,9 @@ import com.uep.wap.model.User;
 
 public class CommentDTO {
 
-
     private String content;
 
-
-    private long createdAt;
+    private long createdate;
 
     private int upvotes;
 
@@ -29,12 +27,12 @@ public class CommentDTO {
         this.content = content;
     }
 
-    public long getCreatedAt() {
-        return createdAt;
+    public long getCreatedate() {
+        return createdate;
     }
 
-    public void setCreatedAt(long createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedate(long createdate) {
+        this.createdate = createdate;
     }
 
     public long getLastEdited() {
@@ -68,5 +66,4 @@ public class CommentDTO {
     public void setParentPost(Post parentPost) {
         this.parentPost = parentPost;
     }
-
 }

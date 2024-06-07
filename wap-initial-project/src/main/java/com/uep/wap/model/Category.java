@@ -1,12 +1,13 @@
 package com.uep.wap.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "category")
 public class Category {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -15,10 +16,12 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "category")
+    @JsonIgnoreProperties({"category", "answers"})
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Post> posts;
 
-    public Category() {}
+    public Category() {
+    }
 
     public Category(int id) {
         this.id = id;
@@ -45,11 +48,6 @@ public class Category {
     }
 
     public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-
-    public Category(String name, List<Post> posts) {
-        this.name = name;
         this.posts = posts;
     }
 }

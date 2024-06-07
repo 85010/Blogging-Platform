@@ -28,7 +28,6 @@ public class User {
 
     public User() {}
 
-    // Dodany konstruktor
     public User(int id) {
         this.id = id;
     }
