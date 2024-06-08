@@ -10,7 +10,7 @@ import java.util.List;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id")    
     private int id;
     @Column(name = "content")
     private String content;
