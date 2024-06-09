@@ -1,5 +1,6 @@
 package com.uep.wap.controller;
 
+import com.uep.wap.model.Comment;
 import com.uep.wap.model.Post;
 import com.uep.wap.model.Category;
 import com.uep.wap.repository.PostRepository;
@@ -32,11 +33,14 @@ public class HomeController {
                 .stream(postRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
         List<Category> categories = categoryService.getAllCategories();
-        
-        model.addAttribute("posts", posts);
+
         model.addAttribute("newPost", new Post());
+        model.addAttribute("newComment", new Comment());
+
+        model.addAttribute("posts", posts);
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("categories", categories);
+
         return "index";
     }
 

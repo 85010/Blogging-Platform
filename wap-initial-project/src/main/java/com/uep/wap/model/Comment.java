@@ -19,8 +19,8 @@ public class Comment {
     @Column(name = "last_edited")
     private long lastEdited;
     
-    @Column(name = "createdate")
-    private long createdate;
+    @Column(name = "create_date")
+    private long createDate;
     
     @ManyToOne
     @JoinColumn(name = "author_id")
@@ -31,6 +31,15 @@ public class Comment {
     private Post parentPost;
 
     public Comment() {}
+
+    public Comment(String content, User author, long createDate, Post parentPost, int upvotes, long lastEdited) {
+        this.content = content;
+        this.author = author;
+        this.createDate = createDate;
+        this.parentPost = parentPost;
+        this.upvotes = upvotes;
+        this.lastEdited = lastEdited;
+    }
 
     public int getId() {
         return id;
@@ -64,12 +73,12 @@ public class Comment {
         this.lastEdited = lastEdited;
     }
 
-    public long getCreatedate() {
-        return createdate;
+    public long getCreateDate() {
+        return createDate;
     }
 
-    public void setCreatedate(long createdate) {
-        this.createdate = createdate;
+    public void setCreateDate(long createDate) {
+        this.createDate = createDate;
     }
 
     public User getAuthor() {
@@ -87,15 +96,6 @@ public class Comment {
     public void setParentPost(Post parentPost) {
         this.parentPost = parentPost;
     }
-
-    public Comment(String content, User author, long createdate, Post parentPost, int upvotes, long lastEdited) {
-        this.content = content;
-        this.author = author;
-        this.createdate = createdate;
-		this.parentPost = parentPost;
-		this.upvotes = upvotes;
-		this.lastEdited = lastEdited;
-	}
 	
 }
 

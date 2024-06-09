@@ -42,21 +42,25 @@
             </form>
             <div th:each="post : ${posts}" class="post">
                 <p th:text="${post.content}">Post Content</p>
-                <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a>
-                <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a>
+<!--                <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a>-->
+<!--                <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a>-->
                 <div class="comments">
                     <h3>Comments</h3>
-                    <form th:action="@{/posts/{postId}/comments(postId=${post.id})}" th:object="${newComment}" method="post">
-                        <label for="content">Comment:</label>
-                        <textarea th:field="*{content}" id="content" required></textarea>
+                    <form th:action="@{/comments/(postId=${post.id})}" th:object="${newComment}" method="post">
+                        <label for="comment_content">Comment:</label>
+                        <input th:field="*{content}" id="comment_content" required></input>
+                        <label for="comment_author">Author:</label>
+                        <select th:field="*{author.id}" id="comment_author" required>
+                            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+                        </select>
                         <br>
                         <button type="submit">Add Comment</button>
                     </form>
                     <div th:each="comment : ${post.comments}" class="comment">
                         <p th:text="${comment.content}">Comment Content</p>
-                        <p><small th:text="${comment.author}">Author</small></p>
-                        <a th:href="@{/posts/{postId}/comments/edit/{id}(postId=${post.id},id=${comment.id})}">Edit</a>
-                        <a th:href="@{/posts/{postId}/comments/delete/{id}(postId=${post.id},id=${comment.id})}">Delete</a>
+                        <p><small th:text="${comment.author.getUsername()}">Author</small></p>
+<!--                        <a th:href="@{/posts/{postId}/comments/edit/{id}(postId=${post.id},id=${comment.id})}">Edit</a>-->
+<!--                        <a th:href="@{/posts/{postId}/comments/delete/{id}(postId=${post.id},id=${comment.id})}">Delete</a>-->
                     </div>
                 </div>
             </div>

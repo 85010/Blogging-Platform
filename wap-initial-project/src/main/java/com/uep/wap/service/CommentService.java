@@ -25,7 +25,7 @@ public class CommentService {
         comment.setContent(commentDTO.getContent());
         comment.setAuthor(new User(commentDTO.getAuthorId()));
         comment.setUpvotes(0);
-        comment.setCreatedate(currentTime);
+        comment.setCreateDate(currentTime);
         comment.setLastEdited(currentTime);
         comment.setParentPost(new Post(commentDTO.getParentPostId()));
         commentRepository.save(comment);

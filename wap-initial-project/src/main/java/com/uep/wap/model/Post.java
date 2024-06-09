@@ -18,8 +18,8 @@ public class Post {
     @Column(name = "upvotes")
     private int upvotes;
 
-    @Column(name = "createdate")
-    private long createdate;
+    @Column(name = "create_date")
+    private long createDate;
 
     @Column(name = "last_edited")
     private long lastEdited;
@@ -49,9 +49,9 @@ public class Post {
         this.id = id;
     }
 
-    public Post(String content, User author, long createdate, long lastEdited, Category category, List<Tag> tags, int upvotes) {
+    public Post(String content, User author, long createDate, long lastEdited, Category category, List<Tag> tags, int upvotes) {
         this.content = content;
-        this.createdate = createdate;
+        this.createDate = createDate;
         this.lastEdited = lastEdited;
         this.tags = tags;
         this.upvotes = upvotes;
@@ -76,11 +76,11 @@ public class Post {
     }
 
     public long getCreatedate() {
-        return createdate;
+        return createDate;
     }
 
     public void setCreatedate(long createdate) {
-        this.createdate = createdate;
+        this.createDate = createdate;
     }
 
     public long getLastEdited() {

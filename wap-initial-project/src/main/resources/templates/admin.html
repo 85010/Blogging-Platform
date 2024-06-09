@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav>
+            <ul>
+                <li><a href="/users">Manage Users</a></li>
+                <li><a href="/posts">Manage Posts</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Users</h2>
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.username}">Username</td>
+                    <td th:text="${user.email}">Email</td>
+                    <td th:text="${user.role}">Role</td>
+                    <td>
+                        <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
+                        <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+            <a href="/users/new">Add New User</a>
+        </section>
+
+        <section>
+            <h2>Posts</h2>
+            <table>
+                <tr>
+                    <th>Content</th>
+                    <th>Author</th>
+                    <th>Actions</th>
+                </tr>
+                <tr th:each="post : ${posts}">
+                    <td th:text="${post.content}">Post Content</td>
+                    <td th:text="${post.author.username}">Author</td>
+                    <td>
+                        <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a>
+                        <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+            <a href="/posts/new">Add New Post</a>
+        </section>
+    </main>
+</body>
+</html>

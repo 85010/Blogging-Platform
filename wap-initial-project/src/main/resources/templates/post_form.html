@@ -7,8 +7,8 @@
     <h1 th:text="${post.id == null} ? 'Add New Post' : 'Edit Post'">Post Form</h1>
     <form th:action="@{/posts}" th:object="${post}" method="post">
         <input type="hidden" th:field="*{id}">
-        <label for="title">Title:</label>
-        <input type="text" th:field="*{title}" id="title" required>
+        <label for="title">Content:</label>
+        <input type="text" th:field="*{content}" id="content" required>
         <br>
         <label for="content">Content:</label>
         <textarea th:field="*{content}" id="content" required></textarea>

@@ -1,9 +1,17 @@
 package com.uep.wap.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.uep.wap.dto.NewPostDTO;
 import com.uep.wap.model.Post;
+import com.uep.wap.model.User;
+import com.uep.wap.repository.PostRepository;
 import com.uep.wap.service.PostService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -23,9 +31,29 @@ public class PostController {
 
     @PostMapping(path = "/")
     public String addPost(@RequestBody NewPostDTO postDTO) {
+        System.out.println(postDTO);
+
         postService.addPost(postDTO);
 
         return "Post added";
+    }
+
+    @PostMapping(path = "/new")
+    public String savePost(@ModelAttribute Post post) throws JsonProcessingException {
+        System.out.println("2");
+        System.out.println(new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true).writeValueAsString(post));
+
+        NewPostDTO newPost = new NewPostDTO();
+        newPost.setAuthorId(post.getAuthor().getId());
+        newPost.setContent(post.getContent());
+        newPost.setUpvotes(post.getUpvotes());
+        newPost.setCategoryId(post.getCategory().getId());
+        newPost.setCreateDate(new Date().getTime());
+        newPost.setLastEdited(new Date().getTime());
+
+        postService.addPost(newPost);
+
+        return "redirect:/";
     }
 
     @GetMapping(path = "/{postId}")

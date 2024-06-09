@@ -32,6 +32,12 @@ public class User {
         this.id = id;
     }
 
+    public User(String username, String email, String role) {
+        this.username = username;
+        this.email = email;
+        this.role = role;
+    }
+
     public int getId() {
         return id;
     }
@@ -78,11 +84,5 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
-    }
-
-    public User(String username, String email, String role) {
-        this.username = username;
-        this.email = email;
-        this.role = role;
     }
 }
