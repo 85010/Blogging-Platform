@@ -41,7 +41,9 @@
                 <button type="submit">Add Post</button>
             </form>
             <div th:each="post : ${posts}" class="post">
-                <p th:text="${post.content}">Post Content</p>
+                <p th:text="${post.content}" style="font-size: 18px; font-weight: bold;"></p>
+                <p th:text="${post.category.getName()}" style="font-size: 12px;"></p>
+                <p th:text="${post.author.getUsername()}" style="font-size: 12px;"></p>
 <!--                <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a>-->
 <!--                <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a>-->
                 <div class="comments">

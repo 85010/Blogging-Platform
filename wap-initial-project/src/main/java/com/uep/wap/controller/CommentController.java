@@ -5,6 +5,7 @@ import com.uep.wap.model.Comment;
 import com.uep.wap.model.Post;
 import com.uep.wap.service.CommentService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping(path = "/comments")
@@ -28,7 +29,7 @@ public class CommentController {
 //    }
 
     @PostMapping(path = "/")
-    public String addComment(@RequestParam int postId, @ModelAttribute Comment comment) {
+    public RedirectView addComment(@RequestParam int postId, @ModelAttribute Comment comment) {
 
         NewCommentDTO newComment = new NewCommentDTO();
         newComment.setParentPost(postId);
@@ -36,7 +37,7 @@ public class CommentController {
         newComment.setAuthorId(comment.getAuthor().getId());
 
         commentService.addComment(newComment);
-        return "redirect:/";
+        return new RedirectView("/");
     }
 
     @GetMapping(path = "/user/{userId}")

@@ -10,6 +10,7 @@ import com.uep.wap.repository.PostRepository;
 import com.uep.wap.service.PostService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Date;
 import java.util.Optional;
@@ -39,7 +40,7 @@ public class PostController {
     }
 
     @PostMapping(path = "/new")
-    public String savePost(@ModelAttribute Post post) throws JsonProcessingException {
+    public RedirectView savePost(@ModelAttribute Post post) throws JsonProcessingException {
         System.out.println("2");
         System.out.println(new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true).writeValueAsString(post));
 
@@ -53,7 +54,7 @@ public class PostController {
 
         postService.addPost(newPost);
 
-        return "redirect:/";
+        return new RedirectView("/");
     }
 
     @GetMapping(path = "/{postId}")
