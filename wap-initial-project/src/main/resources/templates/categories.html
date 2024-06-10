@@ -35,6 +35,49 @@
             background-color: blue;
             color: white;
         }
+
+        .category-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .category-list li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .category-list li a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .category-list li a:hover {
+            text-decoration: underline;
+        }
+
+        .category-label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .add-category {
+            display: block;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .add-category:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -48,12 +91,14 @@
             </ul>
         </nav>
     </header>
-    <h1>Categories</h1>
-    <ul>
-        <li th:each="category : ${categories}">
-            <a th:href="@{/posts/by-category/{id}(id=${category.id})}" th:text="${category.name}">Category Name</a>
-        </li>
-    </ul>
-    <a href="/categories/new">Add New Category</a>
+    <main>
+        <h1>Categories</h1>
+        <ul class="category-list">
+            <li th:each="category : ${categories}">
+                <span class="category-label"><strong>Category:</strong> <a th:href="@{/posts/by-category/{id}(id=${category.id})}" th:text="${category.name}">Category Name</a></span>
+            </li>
+        </ul>
+        <a class="add-category" th:href="@{/categories/new}">Add New Category</a>
+    </main>
 </body>
 </html>

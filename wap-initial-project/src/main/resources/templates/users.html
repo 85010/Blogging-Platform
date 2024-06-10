@@ -35,6 +35,46 @@
             background-color: blue;
             color: white;
         }
+
+        .user-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .user-list th, .user-list td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .user-list th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        .user-list tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .user-list tr:hover {
+            background-color: #ddd;
+        }
+
+        .add-user {
+            display: block;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .add-user:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -48,28 +88,30 @@
             </ul>
         </nav>
     </header>
-    <h1>All Users</h1>
-    <a href="/users/new">Add New User</a>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.id}">1</td>
-                <td th:text="${user.username}">Sample Name</td>
-                <td th:text="${user.email}">Sample Email</td>
-                <td>
-                    <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
-                    <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <main>
+        <h1>All Users</h1>
+        <a class="add-user" th:href="@{/users/new}">Add New User</a>
+        <table class="user-list">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}">1</td>
+                    <td th:text="${user.username}">Sample Name</td>
+                    <td th:text="${user.email}">Sample Email</td>
+                    <td>
+                        <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
+                        <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>
