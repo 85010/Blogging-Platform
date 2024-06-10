@@ -95,7 +95,7 @@
         <h1>Categories</h1>
         <ul class="category-list">
             <li th:each="category : ${categories}">
-                <span class="category-label"><strong>Category:</strong> <a th:href="@{/posts/by-category/{id}(id=${category.id})}" th:text="${category.name}">Category Name</a></span>
+                <span class="category-label"><strong> </strong> <a th:href="@{/posts/by-category/{id}(id=${category.id})}" th:text="${category.name}">Category Name</a></span>
             </li>
         </ul>
         <a class="add-category" th:href="@{/categories/new}">Add New Category</a>

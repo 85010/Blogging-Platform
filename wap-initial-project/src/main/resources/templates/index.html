@@ -100,10 +100,9 @@
         .popup {
             display: none; 
             position: fixed; 
-            left: 0; 
-            right: 0; 
-            top: 0; 
-            bottom: 0; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.5); 
             justify-content: center; 
             align-items: center; 
@@ -111,15 +110,16 @@
 
         .popup-content {
             background-color: transparent;
-            padding: 0;
+            padding: 00px;
             border-radius: 10px;
             width: 300px;
             height: 300px;
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
+
 
         .close-button {
             position: absolute;
@@ -128,7 +128,7 @@
             cursor: pointer;
             font-size: 20px;
             font-weight: bold;
-            color: white;
+            color: rgb(109, 109, 109);
         }
 
         .popup-image {

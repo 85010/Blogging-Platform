@@ -14,13 +14,13 @@
         </nav>
     </header>
     <h1>Posts in Category</h1>
-    <div th:if="${posts.isEmpty()}">
+    <div th:if="${#lists.isEmpty(posts)}">
         <p>No posts available in this category.</p>
     </div>
     <div th:each="post : ${posts}">
-        <h2 th:text="${post.title}">Post Title</h2>
-        <p th:text="${post.content}">Post Content</p>
-        <p th:text="${post.author.username}">Author</p>
+        <h2 th:text="${post.title ?: 'Default Title'}">Post Title</h2>
+        <p th:text="${post.content ?: 'Default Content'}">Post Content</p>
+        <p th:text="${post.author.username ?: 'Default Author'}">Author</p>
     </div>
 </body>
 </html>
