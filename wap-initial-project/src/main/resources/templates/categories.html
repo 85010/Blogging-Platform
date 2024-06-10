@@ -2,11 +2,57 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Categories</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        .banner-image {
+            width: 100%; 
+            max-height: 250px; 
+            height: auto; 
+            display: block;
+            margin: 0 auto; 
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: blue;
+            color: white;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <img src="/images/banner.png" alt="Banner Image" class="banner-image">
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/categories}">Categories</a></li>
+                <li><a th:href="@{/users}">Users</a></li>
+            </ul>
+        </nav>
+    </header>
     <h1>Categories</h1>
     <ul>
-        <li th:each="category : ${categories}" th:text="${category.name}">Category Name</li>
+        <li th:each="category : ${categories}">
+            <a th:href="@{/posts/by-category/{id}(id=${category.id})}" th:text="${category.name}">Category Name</a>
+        </li>
     </ul>
     <a href="/categories/new">Add New Category</a>
 </body>

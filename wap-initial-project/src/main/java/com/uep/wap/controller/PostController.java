@@ -5,14 +5,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.uep.wap.dto.NewPostDTO;
 import com.uep.wap.model.Post;
-import com.uep.wap.model.User;
-import com.uep.wap.repository.PostRepository;
 import com.uep.wap.service.PostService;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -75,5 +75,12 @@ public class PostController {
     @GetMapping(path = "/latest")
     public Iterable<Post> getLatestPosts() {
         return postService.getLatestPosts();
+    }
+
+    @GetMapping("/posts/by-category/{id}")
+    public String getPostsByCategory(@PathVariable int id, Model model) {
+        List<Post> posts = postService.findPostsByCategoryId(id);
+        model.addAttribute("posts", posts);
+        return "posts_by_category";
     }
 }

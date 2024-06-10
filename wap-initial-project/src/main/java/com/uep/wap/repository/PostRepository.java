@@ -19,4 +19,6 @@ public interface PostRepository extends CrudRepository<Post, Integer> {
 
     @Query(value = "SELECT p.* FROM posts p WHERE p.category_id=?1", nativeQuery = true)
     List<Post> findPostsByCategoryId(int categoryId);
+
+    List<Post> findByCategoryId(int categoryId);
 }

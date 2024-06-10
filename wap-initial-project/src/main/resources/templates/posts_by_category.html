@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Posts by Category</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/categories}">Categories</a></li>
+                <li><a th:href="@{/users}">Users</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Posts in Category</h1>
+    <div th:if="${posts.isEmpty()}">
+        <p>No posts available in this category.</p>
+    </div>
+    <div th:each="post : ${posts}">
+        <h2 th:text="${post.title}">Post Title</h2>
+        <p th:text="${post.content}">Post Content</p>
+        <p th:text="${post.author.username}">Author</p>
+    </div>
+</body>
+</html>

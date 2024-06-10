@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #33333300;
     color: white;
     padding: 10px;
     text-align: right;
@@ -37,4 +37,64 @@ main {
 
 .comment {
     margin-bottom: 10px;
+}
+
+.banner-image {
+    width: 100%;
+    max-height: 250px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid blue;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    background-color: blue;
+    color: white;
+}
+
+.user-info select {
+    padding: 5px 10px;
+    border: 2px solid blue;
+    color: white;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.user-info select option {
+    background-color: #333;
+    color: white;
+}
+
+.user-info form {
+    margin-left: auto;
 }

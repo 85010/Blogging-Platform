@@ -3,9 +3,50 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        .banner-image {
+            width: 100%; 
+            max-height: 250px; 
+            height: auto; 
+            display: block;
+            margin: 0 auto; 
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: blue;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
+        <img src="/images/banner.png" alt="Banner Image" class="banner-image">
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/categories}">Categories</a></li>
+                <li><a th:href="@{/users}">Users</a></li>
+            </ul>
+        </nav>
         <div class="user-info">
             <form th:action="@{/}" method="get">
                 <select name="userId" onchange="this.form.submit()">
@@ -16,12 +57,6 @@
         </div>
     </header>
     <main>
-        <section class="categories">
-            <h1>Categories</h1>
-            <ul>
-                <li th:each="category : ${categories}" th:text="${category.name}">Category Name</li>
-            </ul>
-        </section>
         <section class="posts">
             <h1>All Posts</h1>
             <form th:action="@{/posts/new}" th:object="${newPost}" method="post">
@@ -44,8 +79,8 @@
                 <p th:text="${post.content}" style="font-size: 18px; font-weight: bold;"></p>
                 <p th:text="${post.category.getName()}" style="font-size: 12px;"></p>
                 <p th:text="${post.author.getUsername()}" style="font-size: 12px;"></p>
-<!--                <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a>-->
-<!--                <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a>-->
+                <!-- <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a> -->
+                <!-- <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a> -->
                 <div class="comments">
                     <h3>Comments</h3>
                     <form th:action="@{/comments/(postId=${post.id})}" th:object="${newComment}" method="post">
@@ -61,8 +96,8 @@
                     <div th:each="comment : ${post.comments}" class="comment">
                         <p th:text="${comment.content}">Comment Content</p>
                         <p><small th:text="${comment.author.getUsername()}">Author</small></p>
-<!--                        <a th:href="@{/posts/{postId}/comments/edit/{id}(postId=${post.id},id=${comment.id})}">Edit</a>-->
-<!--                        <a th:href="@{/posts/{postId}/comments/delete/{id}(postId=${post.id},id=${comment.id})}">Delete</a>-->
+                        <!-- <a th:href="@{/posts/{postId}/comments/edit/{id}(postId=${post.id},id=${comment.id})}">Edit</a> -->
+                        <!-- <a th:href="@{/posts/{postId}/comments/delete/{id}(postId=${post.id},id=${comment.id})}">Delete</a> -->
                     </div>
                 </div>
             </div>

@@ -7,6 +7,9 @@ import com.uep.wap.model.User;
 import com.uep.wap.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.Instant;
 import java.util.List;
@@ -81,4 +84,9 @@ public class PostService {
     public Iterable<Post> getAllPosts() {
         return postRepository.findAll();
     }
-}
+
+    public List<Post> findPostsByCategoryId(int categoryId) {
+        return postRepository.findByCategoryId(categoryId);
+    }
+
+}    
