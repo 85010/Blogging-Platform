@@ -2,22 +2,119 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>User Form</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        .banner-image {
+            width: 100%; 
+            max-height: 250px; 
+            height: auto; 
+            display: block;
+            margin: 0 auto; 
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1 th:text="${user.id == null} ? 'Add New User' : 'Edit User'">User Form</h1>
-    <form th:action="@{/users}" th:object="${user}" method="post">
-        <input type="hidden" th:field="*{id}">
-        <label for="username">Username:</label>
-        <input type="text" th:field="*{username}" id="username" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" th:field="*{email}" id="email" required>
-        <br>
-        <label for="role">Role:</label>
-        <input type="text" th:field="*{role}" id="role" required>
-        <br>
-        <button type="submit">Save</button>
-    </form>
-    <a href="/users">Back to Users</a>
+    <header>
+        <img src="/images/banner.png" alt="Banner Image" class="banner-image">
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/categories}">Categories</a></li>
+                <li><a th:href="@{/users}">Users</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="form-container">
+            <h1 th:text="${user.id == null} ? 'Add New User' : 'Edit User'">User Form</h1>
+            <form th:action="@{/users}" th:object="${user}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <label for="username">Username:</label>
+                <input type="text" th:field="*{username}" id="username" required>
+                <label for="email">Email:</label>
+                <input type="email" th:field="*{email}" id="email" required>
+                <label for="role">Role:</label>
+                <input type="text" th:field="*{role}" id="role" required>
+                <button type="submit">Save</button>
+            </form>
+            <a href="/users" class="back-link">Back to Users</a>
+        </div>
+    </main>
 </body>
 </html>

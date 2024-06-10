@@ -96,6 +96,46 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        .popup {
+            display: none; 
+            position: fixed; 
+            left: 0; 
+            right: 0; 
+            top: 0; 
+            bottom: 0; 
+            background-color: rgba(0, 0, 0, 0.5); 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .popup-content {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 10px;
+            width: 300px;
+            height: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .popup-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -156,5 +196,14 @@
             </div>
         </section>
     </main>
+    
+    <div id="welcome-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button" onclick="closePopup()">&times;</span>
+            <img src="/images/popup-image.png" alt="Welcome Image" class="popup-image">
+        </div>
+    </div>
+
+    <script src="/js/popup.js"></script>
 </body>
 </html>
