@@ -35,6 +35,67 @@
             background-color: blue;
             color: white;
         }
+
+        .post, .comment {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .post {
+            margin-bottom: 20px;
+        }
+
+        .post h2, .comment h3 {
+            margin-top: 0;
+        }
+
+        .post p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .post .category, .post .author, .comment .author {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .post .category {
+            margin-bottom: 10px;
+        }
+
+        .comment {
+            margin-left: 20px;
+        }
+
+        .comment p {
+            margin: 5px 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label, select, textarea, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -62,42 +123,34 @@
             <form th:action="@{/posts/new}" th:object="${newPost}" method="post">
                 <label for="content">Content:</label>
                 <textarea th:field="*{content}" id="content" required></textarea>
-                <br>
                 <label for="author">Author:</label>
                 <select th:field="*{author.id}" id="author" required>
                     <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
                 </select>
-                <br>
                 <label for="category">Category:</label>
                 <select th:field="*{category.id}" id="category" required>
                     <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
                 </select>
-                <br>
                 <button type="submit">Add Post</button>
             </form>
             <div th:each="post : ${posts}" class="post">
-                <p th:text="${post.content}" style="font-size: 18px; font-weight: bold;"></p>
-                <p th:text="${post.category.getName()}" style="font-size: 12px;"></p>
-                <p th:text="${post.author.getUsername()}" style="font-size: 12px;"></p>
-                <!-- <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a> -->
-                <!-- <a th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a> -->
+                <h2 th:text="${post.content}">Post Content</h2>
+                <p class="category"><strong>Category:</strong> <span th:text="${post.category.getName()}">Category</span></p>
+                <p class="author"><strong>Author:</strong> <span th:text="${post.author.getUsername()}">Author</span></p>
                 <div class="comments">
                     <h3>Comments</h3>
                     <form th:action="@{/comments/(postId=${post.id})}" th:object="${newComment}" method="post">
                         <label for="comment_content">Comment:</label>
-                        <input th:field="*{content}" id="comment_content" required></input>
+                        <textarea th:field="*{content}" id="comment_content" required></textarea>
                         <label for="comment_author">Author:</label>
                         <select th:field="*{author.id}" id="comment_author" required>
                             <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
                         </select>
-                        <br>
                         <button type="submit">Add Comment</button>
                     </form>
                     <div th:each="comment : ${post.comments}" class="comment">
                         <p th:text="${comment.content}">Comment Content</p>
-                        <p><small th:text="${comment.author.getUsername()}">Author</small></p>
-                        <!-- <a th:href="@{/posts/{postId}/comments/edit/{id}(postId=${post.id},id=${comment.id})}">Edit</a> -->
-                        <!-- <a th:href="@{/posts/{postId}/comments/delete/{id}(postId=${post.id},id=${comment.id})}">Delete</a> -->
+                        <p class="author"><strong>Author:</strong> <span th:text="${comment.author.getUsername()}">Author</span></p>
                     </div>
                 </div>
             </div>
