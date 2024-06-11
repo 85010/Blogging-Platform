@@ -7,7 +7,7 @@ public class CommentDTO {
 
     private String content;
 
-    private long createdate;
+    private long createDate;
 
     private int upvotes;
 
@@ -27,12 +27,12 @@ public class CommentDTO {
         this.content = content;
     }
 
-    public long getCreatedate() {
-        return createdate;
+    public long getCreateDate() {
+        return createDate;
     }
 
-    public void setCreatedate(long createdate) {
-        this.createdate = createdate;
+    public void setCreateDate(long createDate) {
+        this.createDate = createDate;
     }
 
     public long getLastEdited() {

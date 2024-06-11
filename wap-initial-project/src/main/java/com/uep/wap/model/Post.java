@@ -75,12 +75,12 @@ public class Post {
         this.content = content;
     }
 
-    public long getCreatedate() {
+    public long getCreateDate() {
         return createDate;
     }
 
-    public void setCreatedate(long createdate) {
-        this.createDate = createdate;
+    public void setCreateDate(long createDate) {
+        this.createDate = createDate;
     }
 
     public long getLastEdited() {

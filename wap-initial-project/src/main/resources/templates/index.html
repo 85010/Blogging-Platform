@@ -177,6 +177,7 @@
                 <h2 th:text="${post.content}">Post Content</h2>
                 <p class="category"><strong>Category:</strong> <span th:text="${post.category.getName()}">Category</span></p>
                 <p class="author"><strong>Author:</strong> <span th:text="${post.author.getUsername()}">Author</span></p>
+                <p class="create-date"><strong>Create date:</strong> <span th:text="${#dates.format(post.createDate * 1000, 'dd-MM-yyyy HH:mm')}"></span></p>
                 <div class="comments">
                     <h3>Comments</h3>
                     <form th:action="@{/comments/(postId=${post.id})}" th:object="${newComment}" method="post">
@@ -191,6 +192,7 @@
                     <div th:each="comment : ${post.comments}" class="comment">
                         <p th:text="${comment.content}">Comment Content</p>
                         <p class="author"><strong>Author:</strong> <span th:text="${comment.author.getUsername()}">Author</span></p>
+                        <p class="create-date"><strong>Create date:</strong> <span th:text="${#dates.format(comment.createDate * 1000, 'dd-MM-yyyy HH:mm')}"></span></p>
                     </div>
                 </div>
             </div>

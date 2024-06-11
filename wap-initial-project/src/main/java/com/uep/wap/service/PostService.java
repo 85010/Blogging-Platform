@@ -25,7 +25,7 @@ public class PostService {
 
         Post post = new Post(); 
         post.setContent(postDTO.getContent());
-        post.setCreatedate(currentTime);
+        post.setCreateDate(currentTime);
         post.setLastEdited(currentTime);
         post.setAuthor(new User(postDTO.getAuthorId()));
         post.setCategory(new Category(postDTO.getCategoryId())); 
