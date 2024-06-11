@@ -148,14 +148,6 @@
                 <li><a th:href="@{/users}">Users</a></li>
             </ul>
         </nav>
-        <div class="user-info">
-            <form th:action="@{/}" method="get">
-                <select name="userId" onchange="this.form.submit()">
-                    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"
-                            th:selected="${user.id} == ${currentUser?.id}">Username</option>
-                </select>
-            </form>
-        </div>
     </header>
     <main>
         <section class="posts">
