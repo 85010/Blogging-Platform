@@ -32,6 +32,9 @@ public class HomeController {
         List<Post> posts = StreamSupport
                 .stream(postRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+    
+        posts.sort((post1, post2) -> Long.compare(post2.getCreateDate(), post1.getCreateDate()));
+    
         List<Category> categories = categoryService.getAllCategories();
 
         model.addAttribute("newPost", new Post());
@@ -66,4 +69,5 @@ public class HomeController {
         model.addAttribute("categories", categories);
         return "edit-post";
     }
+
 }
