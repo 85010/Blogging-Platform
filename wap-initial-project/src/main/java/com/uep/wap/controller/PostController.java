@@ -68,8 +68,10 @@ public class PostController {
     }
 
     @GetMapping(path = "/category/{categoryId}")
-    public Iterable<Post> getCategoryPosts(@PathVariable int categoryId) { 
-       return postService.getPostsFromCategory(categoryId);
+    public String getCategoryPosts(@PathVariable int categoryId, Model model) {
+        List<Post> posts = postService.getPostsFromCategory(categoryId);
+        model.addAttribute("posts", posts);
+        return "posts_by_category";
     }
 
     @GetMapping(path = "/latest")

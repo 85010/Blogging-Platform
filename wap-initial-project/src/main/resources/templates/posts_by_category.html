@@ -1,10 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Posts by Category</title>
+    <title>Posts</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        .banner-image {
+            width: 100%; 
+            max-height: 250px; 
+            height: auto; 
+            display: block;
+            margin: 0 auto; 
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        .post, .comment {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .post {
+            margin-bottom: 20px;
+        }
+
+        .post h2, .comment h3 {
+            margin-top: 0;
+        }
+
+        .post p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .post .category, .post .author, .comment .author, .post .create-date {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .post .category {
+            margin-bottom: 10px;
+        }
+
+        .comment {
+            margin-left: 20px;
+        }
+
+        .comment p {
+            margin: 5px 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label, select, textarea, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <header>
+        <img src="/images/banner.png" alt="Banner Image" class="banner-image">
         <nav>
             <ul>
                 <li><a th:href="@{/}">Home</a></li>
@@ -13,16 +109,17 @@
             </ul>
         </nav>
     </header>
-    <h1>Posts in Category</h1>
-    <div th:if="${#lists.isEmpty(posts)}">
-        <p>No posts available in this category.</p>
-    </div>
-    <div th:each="post : ${posts}" class="post">
-        <h2 th:text="${post.title} ? ${post.title} : 'Default Title'">Post Title</h2>
-        <p class="category"><strong>Category:</strong> <span th:text="${post.category.getName()}">Category</span></p>
-        <p class="author"><strong>Author:</strong> <span th:text="${post.author.getUsername()}">Author</span></p>
-        <p class="create-date"><strong>Create date:</strong> <span th:text="${#dates.format(post.createDate * 1000, 'dd-MM-yyyy HH:mm')}"></span></p>
-        <!-- Pozostała zawartość posta -->
-    </div>
+    <main>
+        <h1>Posts in Category</h1>
+        <div th:if="${#lists.isEmpty(posts)}">
+            <p>No posts available in this category.</p>
+        </div>
+        <div th:each="post : ${posts}" class="post">
+            <h2 th:text="${post.content} ? ${post.content} : 'Default Content'">Post Content</h2>
+            <p class="category"><strong>Category:</strong> <span th:text="${post.category.name}">Category</span></p>
+            <p class="author"><strong>Author:</strong> <span th:text="${post.author.username}">Author</span></p>
+            <p class="create-date"><strong>Create date:</strong> <span th:text="${#dates.format(post.createDate * 1000, 'dd-MM-yyyy HH:mm')}"></span></p>
+        </div>
+    </main>
 </body>
 </html>
