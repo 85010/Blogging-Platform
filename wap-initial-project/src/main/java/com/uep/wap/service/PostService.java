@@ -59,14 +59,6 @@ public class PostService {
         return posts;
     }
 
-    public List<Post> getPostsFromCategory(int categoryId) {
-        System.out.println("Getting category posts: " + categoryId);
-
-        List<Post> posts = postRepository.findPostsByCategoryId(categoryId);
-
-        return posts;
-    }
-
     public List<Post> getLatestPosts() {
         System.out.println("Getting latest posts");
 
@@ -85,8 +77,16 @@ public class PostService {
         return postRepository.findAll();
     }
 
+    public List<Post> getPostsFromCategory(int categoryId) {
+        System.out.println("Getting category posts: " + categoryId);
+
+        List<Post> posts = postRepository.findPostsByCategoryId(categoryId);
+
+        return posts;
+    }
+
     public List<Post> findPostsByCategoryId(int categoryId) {
-        return postRepository.findByCategoryId(categoryId);
+        return postRepository.findPostsByCategoryId(categoryId);
     }
 
 }    
